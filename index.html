@@ -15,9 +15,11 @@
   <body>
     <div class="title">
       <h1>Asteroids &#8608; &#8608;</h1>
+      <button name="button">Start Game</button>
+      <br>
       <div>Points: </div><div id="points">0</div>
       <br>
-      <div id="win-status"></div>
+      <div id="win-status"> </div>
     </div>
 
   <section>
@@ -68,6 +70,8 @@
     margin: auto;
     font-size: 24px;
     text-shadow: 2px 2px #000;
+    width: 400px;
+    height: 130px;
   }
   .title h1 {
     font-size: 56px;
@@ -80,16 +84,7 @@
     height: 500px;
     border: 2px solid black;
     margin: 60px auto;
-    background: #fff;
-    opacity: 0.6;
-    text-shadow: 4px 4px #000;
-  }
-  section.explode {
-    width: 500px;
-    height: 500px;
-    border: 2px solid black;
-    margin: 60px auto;
-    background: #000;
+    background: #098716;
     opacity: 0.6;
     text-shadow: 4px 4px #000;
   }
@@ -118,5 +113,19 @@
     height: 100%;
     font-family: sans-serif;
     position: absolute;
+  }
+  button {
+    /*background: #098716;*/
+    color: #000;
+    margin: 0 0 10px 0;
+    height: 40px;
+    font-size: 24px;
+    width: 100px;
+    shadow: 4px 4px #000;
+    border-radius: 10px;
+  }
+
+  .guest-account button:hover {
+    color: #0c0;
   }
 </style>
