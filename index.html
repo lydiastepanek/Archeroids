@@ -13,13 +13,18 @@
 
   </head>
   <body>
-    <h1>Asteroids &#8608; &#8608;</h1>
+    <div class="title">
+      <h1>Asteroids &#8608; &#8608;</h1>
+      <div>Points: </div><div id="points">0</div>
+      <br>
+      <div id="win-status"></div>
+    </div>
 
-  <div>
+  <section>
     <canvas id="ui-layer" width="480" height="320"></canvas>
     <canvas id="game-canvas" width="500" height="500"></canvas>
     <canvas id="background-layer" width="480" height="320"></canvas>
-  </div>
+  </section>
 
     <script>
       var canvas = document.getElementById("game-canvas")
@@ -56,15 +61,21 @@
    color: inherit;
    background: transparent;
   }
-  h1 {
+  .title {
     color: #fff;
     text-align: center;
     z-index: 4;
     margin: auto;
-    font-size: 56px;
+    font-size: 24px;
     text-shadow: 2px 2px #000;
   }
-  div {
+  .title h1 {
+    font-size: 56px;
+  }
+  .title div {
+    display: inline;
+  }
+  section {
     width: 500px;
     height: 500px;
     border: 2px solid black;
@@ -73,7 +84,7 @@
     opacity: 0.6;
     text-shadow: 4px 4px #000;
   }
-  div.explode {
+  section.explode {
     width: 500px;
     height: 500px;
     border: 2px solid black;
