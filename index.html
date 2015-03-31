@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="title">
-      <h1>Asteroids &#8608; &#8608;</h1>
+      <h1>Archeroids</h1>
       <button name="button">Start Game</button>
       <br>
       <div>Points: </div><div id="points">0</div>
@@ -34,8 +34,14 @@
       Asteroids.ctx = ctx;
       Asteroids.width = canvas.width;
       Asteroids.height = canvas.height;
-      gameView = new Asteroids.GameView(ctx);
-      gameView.start();
+      // gameView = new Asteroids.GameView(ctx);
+      // gameView.start();
+
+      $("button").on("click", function (event) {
+        Asteroids.gameView = new Asteroids.GameView(ctx);
+        Asteroids.gameView.start();
+        $("button").prop("disabled", true)
+      });
 
       // var img = new Image();
       // img.onload = function () {
@@ -75,6 +81,7 @@
   }
   .title h1 {
     font-size: 56px;
+    margin: 10px;
   }
   .title div {
     display: inline;
@@ -84,7 +91,7 @@
     height: 500px;
     border: 2px solid black;
     margin: 60px auto;
-    background: #098716;
+    background: #fff;
     opacity: 0.6;
     text-shadow: 4px 4px #000;
   }
@@ -106,13 +113,14 @@
   }
   body {
     z-index: 0;
-    background-image: url('lib/trees.jpg');
-    /*background-image: url("lib/Oak-Tree2.jpg");*/
+    /*background-image: url('lib/trees.jpg');*/
+    background-image: url("lib/Oak-Tree2.jpg");
     background-size: 100%;
     width: 100%;
     height: 100%;
     font-family: sans-serif;
     position: absolute;
+    object-fit: cover;
   }
   button {
     /*background: #098716;*/
@@ -120,7 +128,7 @@
     margin: 0 0 10px 0;
     height: 40px;
     font-size: 24px;
-    width: 100px;
+    width: 300px;
     shadow: 4px 4px #000;
     border-radius: 10px;
   }
