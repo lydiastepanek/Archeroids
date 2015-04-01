@@ -30,9 +30,9 @@
       var canvas = document.getElementById("game-canvas")
       var ctx = canvas.getContext("2d");
       Asteroids.ctx = ctx;
-      Asteroids.width = canvas.width = window.innerWidth;
-      Asteroids.height = canvas.height = window.innerHeight;
-      $("section").width(window.innerWidth - 320) //put 20 because calculation was slightly off
+      Asteroids.width = canvas.width = window.innerWidth - 320; //put 20 because calculation was slightly off
+      Asteroids.height = canvas.height = (window.innerWidth - 320) * 852 / 1280;
+      $("section").width(canvas.width) //put 20 because calculation was slightly off
 
       $("button").on("click", function (event) {
         Asteroids.gameView = new Asteroids.GameView(ctx, canvas.width, canvas.height);
