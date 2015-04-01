@@ -12,7 +12,7 @@
     <script src="jquery-1.11.2.min.js"></script>
 
   </head>
-  <!-- <body> -->
+  <body class="body group">
     <div class="title">
       <h1>Archeroids</h1>
       <button name="button">Start Game</button>
@@ -32,6 +32,7 @@
       Asteroids.ctx = ctx;
       Asteroids.width = canvas.width = window.innerWidth;
       Asteroids.height = canvas.height = window.innerHeight;
+      $("section").width(window.innerWidth - 320) //put 20 because calculation was slightly off
 
       $("button").on("click", function (event) {
         Asteroids.gameView = new Asteroids.GameView(ctx, canvas.width, canvas.height);
@@ -41,11 +42,11 @@
 
       Asteroids.img = new Image();
       Asteroids.img.onload = function () {
-        ctx.drawImage(Asteroids.img, 0, 0, Asteroids.width, Asteroids.height);
+        ctx.drawImage(Asteroids.img, 0, 0, window.innerWidth - 320, (window.innerWidth - 320) * 852 / 1280);
       };
       Asteroids.img.src = "lib/Oak-Tree2.jpg";
     </script>
-  <!-- </body> -->
+  </body>
 </html>
 
 <style>
@@ -65,6 +66,15 @@
    color: inherit;
    background: transparent;
   }
+  .group:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+  }
   .title {
     color: #fff;
     text-align: center;
@@ -72,8 +82,9 @@
     margin: auto;
     font-size: 24px;
     text-shadow: 2px 2px #000;
-    width: 400px;
-    height: 100px;
+    width: 300px;
+    height: 100%;
+    float: left;
     display: block;
   }
   .title h1 {
@@ -83,30 +94,7 @@
   .title div {
     display: inline;
   }
-  section {
-    width: 500px;
-    height: 500px;
-    border: 2px solid black;
-    /*margin: 60px auto;*/
-    background: #fff;
-    /*opacity: 0.6;*/
-    text-shadow: 4px 4px #000;
-  }
-  canvas {
-    position: absolute;
-  }
-  /*body {
-    z-index: 0;
-    background-image: url("lib/Oak-Tree2.jpg");
-    background-size: 100%;
-    width: 100%;
-    height: 100%;
-    font-family: sans-serif;
-    position: absolute;
-    object-fit: cover;
-  }*/
   button {
-    /*background: #098716;*/
     color: #000;
     margin: 0 0 10px 0;
     height: 40px;
@@ -115,8 +103,8 @@
     shadow: 4px 4px #000;
     border-radius: 10px;
   }
-
-  .guest-account button:hover {
-    color: #0c0;
+  section {
+    float: right;
+    display: block;
   }
 </style>
