@@ -13,18 +13,14 @@
 
   </head>
   <body class="body group">
-    <div class="title">
-      <h1>Archeroids</h1>
-      <button name="button">Start Game</button>
-      <br>
-      <div>Points: </div><div id="points">0</div>
-      <br>
-      <div id="win-status"> </div>
-    </div>
+    <ul class="title">
+      <li><h1>Archeroids</h1></li>
+      <li><button name="button">Start Game</button></li>
+      <li>Points: <span id="points">0</span></li>
+      <li id="win-status"> </li>
+    </ul>
 
-  <section>
     <canvas id="game-canvas"></canvas>
-  </section>
 
     <script>
       var canvas = document.getElementById("game-canvas")
@@ -32,7 +28,8 @@
       Asteroids.ctx = ctx;
       Asteroids.width = canvas.width = window.innerWidth - 320; //put 20 because calculation was slightly off
       Asteroids.height = canvas.height = (window.innerWidth - 320) * 852 / 1280;
-      $("section").width(canvas.width) //put 20 because calculation was slightly off
+      $("#game-canvas").width(canvas.width)
+      // $("section").width($(".title").width())
 
       $("button").on("click", function (event) {
         Asteroids.gameView = new Asteroids.GameView(ctx, canvas.width, canvas.height);
@@ -44,7 +41,7 @@
       Asteroids.img.onload = function () {
         ctx.drawImage(Asteroids.img, 0, 0, window.innerWidth - 320, (window.innerWidth - 320) * 852 / 1280);
       };
-      Asteroids.img.src = "lib/Oak-Tree2.jpg";
+      Asteroids.img.src = "lib/trees.jpg";
     </script>
   </body>
 </html>
@@ -53,7 +50,7 @@
   html, body, header, nav, h1, ul, li, h3,
   strong, main, section, img, div, h2, p, a,
   form, fieldset, label, input, textarea,
-  article, footer, small {
+  article, footer, canvas, small {
    margin: 0;
    padding: 0;
    border: 0;
@@ -72,39 +69,51 @@
     display: block;
   }
   body {
+    background: #ccc;
     width: 100%;
     height: 100%;
   }
   .title {
-    color: #fff;
+    font-family: sans-serif;
+    color: #000;
     text-align: center;
-    z-index: 4;
-    margin: auto;
     font-size: 24px;
-    text-shadow: 2px 2px #000;
-    width: 300px;
+    /*text-shadow: 2px 2px #aaa;*/
+    width: 259px;
     height: 100%;
     float: left;
+    /*margin: auto;*/
     display: block;
+    margin: 50px 0 0 0;
+    padding: 20px;
   }
   .title h1 {
-    font-size: 56px;
-    margin: 10px;
+    font-weight: bold;
+    font-size: 30px;
+
   }
-  .title div {
-    display: inline;
+  ul {
+    list-style: none;
+  }
+  .title li {
+    /*display: inline;*/
+    padding: 20px;
+    border-bottom: 1px solid #aaa;
+  }
+  .title li:nth-child(4) {
+    border: none;
   }
   button {
     color: #000;
-    margin: 0 0 10px 0;
-    height: 40px;
+    background: #aaa;
     font-size: 24px;
-    width: 300px;
-    shadow: 4px 4px #000;
+    shadow: 2px 2px #eee;
+    /*text-shadow: 2px 2px #aaa;*/
     border-radius: 10px;
   }
-  section {
+  #game-canvas {
     float: right;
     display: block;
+    /*margin: auto;*/
   }
 </style>
