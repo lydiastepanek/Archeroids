@@ -14,10 +14,17 @@
   </head>
   <body class="body group">
     <ul class="title">
-      <li><h1>Archeroids</h1></li>
-      <li><button name="button">Start Game</button></li>
-      <li>Points: <span id="points">0</span></li>
-      <li id="win-status"> </li>
+      <li class="menu"><h1>Archeroids</h1></li>
+      <li class="menu">Directions:
+        <ul class="directions-list">
+        <li class="directions">Press arrow keys to move your bow and array</li>
+        <li class="directions">Press space bar to shoot arrows at the targets</li>
+        <li class="directions">To win you must shoot all the targets</li>
+        </ul>
+      </li>
+      <li class="menu"><button name="button">Start Game</button></li>
+      <li class="menu">Points: <span id="points">0</span></li>
+      <li class="menu" id="win-status"> </li>
     </ul>
 
     <canvas id="game-canvas"></canvas>
@@ -90,18 +97,22 @@
   .title h1 {
     font-weight: bold;
     font-size: 30px;
-
   }
-  ul {
-    list-style: none;
-  }
-  .title li {
+  .title .menu {
     /*display: inline;*/
     padding: 20px;
+    list-style: none;
     border-bottom: 1px solid #aaa;
   }
-  .title li:nth-child(4) {
+  .title .menu:nth-child(5) {
     border: none;
+  }
+  .directions-list {
+  }
+  .directions {
+    display: block;
+    font-size: 16px;
+    margin: 10px;
   }
   button {
     color: #000;
