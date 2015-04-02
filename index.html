@@ -12,41 +12,54 @@
     <script src="jquery-1.11.2.min.js"></script>
 
   </head>
-  <body class="body group">
+  <body>
+    <section class="content">
+
+    <canvas id="game-canvas"></canvas>
+
     <ul class="title">
       <li class="menu"><h1>Archeroids</h1></li>
-      <li class="menu">Directions:
+      <li class="menu"><button name="directions" id="directions-button">Directions</button>
         <ul class="directions-list">
         <li class="directions">Press arrow keys to move your bow and array</li>
         <li class="directions">Press space bar to shoot arrows at the targets</li>
         <li class="directions">To win you must shoot all the targets</li>
+        <li class="directions">Press "Start Game" to play!</li>
         </ul>
       </li>
-      <li class="menu"><button name="button">Start Game</button></li>
+      <li class="menu"><button name="button" id="start-button">Start Game</button></li>
       <li class="menu">Points: <span id="points">0</span></li>
       <li class="menu" id="win-status"> </li>
     </ul>
 
-    <canvas id="game-canvas"></canvas>
+  </section>
 
     <script>
       var canvas = document.getElementById("game-canvas")
       var ctx = canvas.getContext("2d");
       Asteroids.ctx = ctx;
-      Asteroids.width = canvas.width = window.innerWidth - 320; //put 20 because calculation was slightly off
-      Asteroids.height = canvas.height = (window.innerWidth - 320) * 852 / 1280;
+      Asteroids.width = canvas.width = window.innerWidth; //put 20 because calculation was slightly off
+      Asteroids.height = canvas.height = window.innerHeight; // 852 / 1280
       $("#game-canvas").width(canvas.width)
-      // $("section").width($(".title").width())
 
-      $("button").on("click", function (event) {
+      $("#directions-button").on("click", function (event) {
+        if ($(".directions-list").css("display") === "none") {
+          $(".directions-list").css("display","block")
+        } else {
+          $(".directions-list").css("display","none")
+        };
+      });
+
+      $("#start-button").on("click", function (event) {
+        $("canvas").fadeTo( "slow" , 1)
         Asteroids.gameView = new Asteroids.GameView(ctx, canvas.width, canvas.height);
         Asteroids.gameView.start();
-        $("button").prop("disabled", true)
+        $("#start-button").hide()
       });
 
       Asteroids.img = new Image();
       Asteroids.img.onload = function () {
-        ctx.drawImage(Asteroids.img, 0, 0, window.innerWidth - 320, (window.innerWidth - 320) * 852 / 1280);
+        ctx.drawImage(Asteroids.img, 0, 0, window.innerWidth, window.innerWidth * (852 / 1280));
       };
       Asteroids.img.src = "lib/trees.jpg";
     </script>
@@ -77,54 +90,58 @@
   }
   body {
     background: #ccc;
-    width: 100%;
-    height: 100%;
+  }
+  content {
   }
   .title {
     font-family: sans-serif;
-    color: #000;
+    color: #fff;
     text-align: center;
     font-size: 24px;
-    /*text-shadow: 2px 2px #aaa;*/
-    width: 259px;
     height: 100%;
-    float: left;
-    /*margin: auto;*/
-    display: block;
-    margin: 50px 0 0 0;
-    padding: 20px;
+    /*margin: 50px 0 0 0;*/
+    padding: 0px 50px;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    top: 10px;
+    width: 300px;
   }
   .title h1 {
     font-weight: bold;
     font-size: 30px;
   }
   .title .menu {
-    /*display: inline;*/
     padding: 20px;
     list-style: none;
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid #fff;
   }
   .title .menu:nth-child(5) {
     border: none;
   }
   .directions-list {
+    list-style: none;
+    background: #ccc;
+    padding: 5px;
+    border-radius: 10px;
+    display: none;
+    position: absolute;
   }
   .directions {
-    display: block;
     font-size: 16px;
     margin: 10px;
   }
   button {
-    color: #000;
+    color: #fff;
     background: #aaa;
     font-size: 24px;
     shadow: 2px 2px #eee;
     /*text-shadow: 2px 2px #aaa;*/
     border-radius: 10px;
   }
-  #game-canvas {
-    float: right;
-    display: block;
-    /*margin: auto;*/
+  canvas: {
+    position: absolute;
+    /*left: 20px;
+    top: 20px;*/
   }
 </style>
