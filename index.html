@@ -21,10 +21,10 @@
       <li class="menu"><h1>Archeroids</h1></li>
       <li class="menu"><button name="directions" id="directions-button">Directions</button>
         <ul class="directions-list">
-        <li class="directions">Press arrow keys to move your bow and array</li>
-        <li class="directions">Press space bar to shoot arrows at the targets</li>
-        <li class="directions">To win you must shoot all the targets</li>
-        <li class="directions">Press "Start Game" to play!</li>
+        <li class="directions">&bull; Press arrow keys to move your bow and arrow.</li>
+        <li class="directions">&bull; Press space bar to shoot arrows at the targets.</li>
+        <li class="directions">&bull; To win you must shoot all the targets.</li>
+        <li class="directions">&bull; Press "Start Game" to play!</li>
         </ul>
       </li>
       <li class="menu"><button name="button" id="start-button">Start Game</button></li>
@@ -54,7 +54,8 @@
         $("canvas").fadeTo( "slow" , 1)
         Asteroids.gameView = new Asteroids.GameView(ctx, canvas.width, canvas.height);
         Asteroids.gameView.start();
-        $("#start-button").hide()
+        // $("#start-button").hide()
+        $("#start-button").prop("disabled",true)
       });
 
       Asteroids.img = new Image();
@@ -90,6 +91,7 @@
   }
   body {
     background: #ccc;
+    text-shadow: 0px 10px 20px #000;
   }
   content {
   }
@@ -126,6 +128,10 @@
     border-radius: 10px;
     display: none;
     position: absolute;
+    text-shadow: none;
+    color: #000;
+    width: 375px;
+    text-align: left;
   }
   .directions {
     font-size: 16px;
@@ -136,8 +142,10 @@
     background: #aaa;
     font-size: 24px;
     shadow: 2px 2px #eee;
-    /*text-shadow: 2px 2px #aaa;*/
     border-radius: 10px;
+  }
+  button:disabled {
+    color: #ccc;
   }
   canvas: {
     position: absolute;
