@@ -21,10 +21,15 @@
       <li class="menu"><h1>Archeroids</h1></li>
       <li class="menu"><button name="directions" id="directions-button">Directions</button>
         <ul class="directions-list">
-        <li class="directions">&bull; Press arrow keys to move your bow and arrow.</li>
-        <li class="directions">&bull; Press space bar to shoot arrows at the targets.</li>
-        <li class="directions">&bull; To win you must shoot all the targets.</li>
-        <li class="directions">&bull; Press "Start Game" to play!</li>
+        <li class="directions">Key:</li>
+        <li class="directions">&bull; Arrow keys: Moves the bow</li>
+        <li class="directions">&bull; Space bar: Shoots arrows at the targets</li>
+        <li class="directions">Points:</li>
+        <li class="directions">&bull; +2 pts when you hit a target</li>
+        <li class="directions">&bull; -1 pts when you get hit by a target</li>
+
+        <li class="directions">How you win: Shoot all the targets</li>
+        <li class="directions">Press "Start Game" to play!</li>
         </ul>
       </li>
       <li class="menu"><button name="button" id="start-button">Start Game</button></li>
@@ -125,17 +130,20 @@
     list-style: none;
     background: #ccc;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 20px;
     display: none;
     position: absolute;
     text-shadow: none;
     color: #000;
     width: 375px;
     text-align: left;
+    border: 2px solid #000;
+    opacity: .8;
   }
   .directions {
     font-size: 16px;
     margin: 10px;
+    font-weight: bold;
   }
   button {
     color: #fff;
