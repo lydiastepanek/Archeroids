@@ -21,15 +21,16 @@
       <li class="menu"><h1>Archeroids</h1></li>
       <li class="menu"><button name="directions" id="directions-button">Directions</button>
         <ul class="directions-list">
-        <li class="directions">Key:</li>
-        <li class="directions">&bull; Arrow keys: Moves the bow</li>
+        <span class="modal-close js-modal-close">&times;</span>
+        <li class="directions" id="key">Key:</li>
+        <li class="directions">&bull; Arrow keys: Moves the bow (and speeds it up!)</li>
         <li class="directions">&bull; Space bar: Shoots arrows at the targets</li>
-        <li class="directions">Points:</li>
+        <li class="directions" id="points">Points:</li>
         <li class="directions">&bull; +2 pts when you hit a target</li>
         <li class="directions">&bull; -1 pts when you get hit by a target</li>
 
-        <li class="directions">How you win: Shoot all the targets</li>
-        <li class="directions">Press "Start Game" to play!</li>
+        <li class="directions" id="how">How you win: Shoot all the targets</li>
+        <li class="directions" id="press">Press "Start Game" to play!</li>
         </ul>
       </li>
       <li class="menu"><button name="button" id="start-button">Start Game</button></li>
@@ -43,7 +44,7 @@
       var canvas = document.getElementById("game-canvas")
       var ctx = canvas.getContext("2d");
       Asteroids.ctx = ctx;
-      Asteroids.width = canvas.width = window.innerWidth; //put 20 because calculation was slightly off
+      Asteroids.width = canvas.width = window.innerWidth;
       Asteroids.height = canvas.height = window.innerHeight; // 852 / 1280
       $("#game-canvas").width(canvas.width)
 
@@ -53,6 +54,10 @@
         } else {
           $(".directions-list").css("display","none")
         };
+      });
+
+      $(".modal-close").on("click", function (event) {
+        $(".directions-list").css("display","none")
       });
 
       $("#start-button").on("click", function (event) {
@@ -143,7 +148,6 @@
   .directions {
     font-size: 16px;
     margin: 10px;
-    font-weight: bold;
   }
   button {
     color: #fff;
@@ -155,9 +159,26 @@
   button:disabled {
     color: #ccc;
   }
+  button:hover {
+    color: #f00;
+  }
   canvas: {
     position: absolute;
-    /*left: 20px;
-    top: 20px;*/
+  }
+  .modal-close {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    background: #fff;
+    padding: 0px 5px;
+    border-radius: 3px;
+  }
+  .modal-close:hover {
+    color: #f00;
+  }
+  #key, #points, #how, #press {
+    font-weight: bold;
   }
 </style>
