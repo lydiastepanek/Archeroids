@@ -45,7 +45,7 @@
       var ctx = canvas.getContext("2d");
       Asteroids.ctx = ctx;
       Asteroids.width = canvas.width = window.innerWidth;
-      Asteroids.height = canvas.height = window.innerWidth * (852 / 1280);
+      Asteroids.height = canvas.height = window.innerHeight; // * (852 / 1280);
       $("#game-canvas").width(canvas.width)
 
       $("#directions-button").on("click", function (event) {
@@ -64,13 +64,11 @@
         $("canvas").fadeTo( "slow" , 1)
         Asteroids.gameView = new Asteroids.GameView(ctx, canvas.width, canvas.height);
         Asteroids.gameView.start();
-        // $("#start-button").hide()
         $("#start-button").prop("disabled",true)
       });
 
       Asteroids.img = new Image();
       Asteroids.img.onload = function () {
-        // ctx.drawImage(Asteroids.img, 0, 0, window.innerWidth, window.innerWidth * (852 / 1280));
         ctx.drawImage(Asteroids.img, 0, 0, canvas.width, canvas.height);
       };
       Asteroids.img.src = "lib/trees.jpg";
