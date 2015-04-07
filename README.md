@@ -5,7 +5,7 @@ This is an online game where users use a bow and arrow to shoot at targets and a
 
 Click "Start Game" to play. Click "Directions" for further directions.
 
-[Link](www.asteroids.com)
+[Live link](http://www.lydiastepanek.com/Archeroids/)
 
 ## Interesting Features
 
@@ -16,10 +16,10 @@ Click "Start Game" to play. Click "Directions" for further directions.
 ## Libraries Used
 * HTML canvas
 * jQuery
-
-keymaster.js
+* keymaster.js
 
 ## To Do
-* Use angle (in radians) instead of a delta array for movement. that'll make it so turning isn't janky. Make impule one number
+* Use angle (in radians) instead of a delta array for movement
+* Make impulse build on angle
 * Add Pause button
 * High score
