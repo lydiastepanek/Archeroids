@@ -9,16 +9,13 @@ Click "Start Game" to play. Click "Directions" for further directions.
 
 ## Interesting Features
 
-Rotating bow and arrow
-
-Game adjusts to browser size
-
-Key handlers allow player to press keys to move and accelerate the ship
+* Rotating bow and arrow
+* Game adjusts to browser size
+* Key handlers allow player to press keys to move and accelerate the ship
 
 ## Libraries Used
-HTML canvas
-
-jQuery
+* HTML canvas
+* jQuery
 
 keymaster.js
 
