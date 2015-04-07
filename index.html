@@ -25,7 +25,7 @@
         <li class="directions" id="key">Key:</li>
         <li class="directions">&bull; Arrow keys: Moves the bow (and speeds it up!)</li>
         <li class="directions">&bull; Space bar: Shoots arrows at the targets</li>
-        <li class="directions" id="points">Points:</li>
+        <li class="directions" id="points-directions">Points:</li>
         <li class="directions">&bull; +2 pts when you hit a target</li>
         <li class="directions">&bull; -1 pts when you get hit by a target</li>
 
@@ -45,7 +45,7 @@
       var ctx = canvas.getContext("2d");
       Asteroids.ctx = ctx;
       Asteroids.width = canvas.width = window.innerWidth;
-      Asteroids.height = canvas.height = window.innerHeight; // 852 / 1280
+      Asteroids.height = canvas.height = window.innerWidth * (852 / 1280);
       $("#game-canvas").width(canvas.width)
 
       $("#directions-button").on("click", function (event) {
@@ -70,7 +70,8 @@
 
       Asteroids.img = new Image();
       Asteroids.img.onload = function () {
-        ctx.drawImage(Asteroids.img, 0, 0, window.innerWidth, window.innerWidth * (852 / 1280));
+        // ctx.drawImage(Asteroids.img, 0, 0, window.innerWidth, window.innerWidth * (852 / 1280));
+        ctx.drawImage(Asteroids.img, 0, 0, canvas.width, canvas.height);
       };
       Asteroids.img.src = "lib/trees.jpg";
     </script>
@@ -110,8 +111,6 @@
     color: #fff;
     text-align: center;
     font-size: 24px;
-    height: 100%;
-    /*margin: 50px 0 0 0;*/
     padding: 0px 50px;
     position: absolute;
     z-index: 1;
@@ -178,7 +177,7 @@
   .modal-close:hover {
     color: #f00;
   }
-  #key, #points, #how, #press {
+  #key, #points-directions, #how, #press {
     font-weight: bold;
   }
 </style>
