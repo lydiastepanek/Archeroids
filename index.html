@@ -69,7 +69,7 @@
 
       Asteroids.img = new Image();
       Asteroids.img.onload = function () {
-        ctx.drawImage(Asteroids.img, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(Asteroids.img, 0, canvas.height - (canvas.width * (852 / 1280)), canvas.width, canvas.width * (852 / 1280));
       };
       Asteroids.img.src = "lib/trees.jpg";
     </script>
@@ -156,7 +156,7 @@
   button:disabled {
     color: #ccc;
   }
-  button:hover {
+  button:hover:enabled {
     color: #f00;
   }
   canvas: {
