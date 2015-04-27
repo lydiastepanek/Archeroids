@@ -37,6 +37,7 @@
         </ul>
       </li>
       <li class="menu"><button name="button" id="start-button">Start Game</button></li>
+      <li class="menu"><button name="button" id="pause-button" disabled>Pause Game</button></li>
       <li class="menu">Points: <span id="points">0</span></li>
       <li class="menu" id="win-status"> </li>
     </ul>
@@ -47,6 +48,7 @@
       var canvas = document.getElementById("game-canvas")
       var ctx = canvas.getContext("2d");
       Asteroids.ctx = ctx;
+      Asteroids.paused = false;
       Asteroids.width = canvas.width = window.innerWidth;
       Asteroids.height = canvas.height = window.innerHeight;
       $("#game-canvas").width(canvas.width)
@@ -68,6 +70,17 @@
         Asteroids.gameView = new Asteroids.GameView(ctx, canvas.width, canvas.height);
         Asteroids.gameView.start();
         $("#start-button").prop("disabled",true)
+        $("#pause-button").prop("disabled",false)
+      });
+
+      $("#pause-button").on("click", function (event) {
+        if (Asteroids.paused) {
+          Asteroids.gameView.start();
+          Asteroids.paused = false;
+        } else {
+          Asteroids.gameView.stop();
+          Asteroids.paused = true;
+        }
       });
 
       Asteroids.img = new Image();
@@ -132,7 +145,7 @@
     list-style: none;
     border-bottom: 1px solid #fff;
   }
-  .title .menu:nth-child(5) {
+  .title .menu:nth-child(6) {
     border: none;
   }
   .directions-list {
