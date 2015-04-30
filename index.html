@@ -37,7 +37,6 @@
         </ul>
       </li>
       <li class="menu"><button name="button" id="start-button">Start Game</button></li>
-      <!-- <li class="menu"><button name="button" id="pause-button" disabled>Pause Game</button></li> -->
       <li class="menu">Points: <span id="points">0</span></li>
       <li class="menu" id="win-status"> </li>
     </ul>
@@ -66,6 +65,12 @@
         $(".directions-list").css("display","none")
       });
 
+      $('input.nospace').keydown(function(e) {
+          if (e.keyCode == 32) {
+              return false;
+          }
+      });
+
       $("#start-button").on("click", function (event) {
         if (!Asteroids.started && !Asteroids.paused) {
           $("canvas").fadeTo( "slow" , 1)
@@ -83,16 +88,6 @@
             Asteroids.paused = true;
             $("#start-button").html("Paused")
           }
-        }
-      });
-
-      $("#pause-button").on("click", function (event) {
-        if (Asteroids.paused) {
-          Asteroids.gameView.start();
-          Asteroids.paused = false;
-        } else {
-          Asteroids.gameView.stop();
-          Asteroids.paused = true;
         }
       });
 
